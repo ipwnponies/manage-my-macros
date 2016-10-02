@@ -2,7 +2,7 @@ from flask import Flask, render_template, request
 
 app = Flask(__name__)
 # Configure the listening server and port
-app.config['SERVER_NAME']='127.0.0.1:13337'
+app.config.from_object('config')
 
 class OAuth2ResponseServer:
     def __init__(self):
