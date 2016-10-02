@@ -5,3 +5,5 @@ virtualenv_run: requirements.txt
 
 clean:
 	rm -rf virtualenv_run/
+	find . -type f -name '*.pyc' -delete
+	find . -type d -name '__pycache__' -delete
