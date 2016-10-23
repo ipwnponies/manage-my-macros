@@ -1,4 +1,10 @@
-.PHONY: development clean
+.PHONY: debug run development clean
+
+run: virtualenv_run
+	python src/OAuth2ResponseServer.py flask run
+
+debug: virtualenv_run
+	python -m pdb src/OAuth2ResponseServer.py
 
 virtualenv_run: requirements.txt requirements-dev.txt
 	bin/venv-update venv= -p python3.5 virtualenv_run install= -r requirements-dev.txt
