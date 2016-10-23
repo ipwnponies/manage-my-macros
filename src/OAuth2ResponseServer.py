@@ -1,12 +1,22 @@
-from flask import Flask, render_template, request
+from flask import Flask
+from flask import render_template
+from flask import request
+from flask import url_for
 
 app = Flask(__name__)
 # Configure the listening server and port
 app.config.from_object('config')
 
+
 class OAuth2ResponseServer:
-    def __init__(self):
-        pass
+
+    @app.route('/oauth/')
+    def oauth():
+        """Listen for the identity provider's authentication response and store credentials if
+        successful.
+        """
+        OAuth2ResponseServer.shutdown()
+        return 'Success'
 
     @app.route('/optparam/')
     @app.route('/optparam/<foo>')
@@ -27,20 +37,21 @@ class OAuth2ResponseServer:
 
     @app.route('/bye/')
     def bye():
-        Server.shutdown()
+        OAuth2ResponseServer.shutdown()
         return 'bye! shutting down'
 
-    def start(self):
-        app.run()
+    def start():
+        app.run(threaded=True)
 
-    def shutdown(self):
+    def shutdown():
         func = request.environ.get('werkzeug.server.shutdown')
         if func:
-            raise RuntimeError('Not running with the Werkzeug Server')
-        else:
             func()
+        else:
+            raise RuntimeError('Not running with the Werkzeug Server')
+
+    def get_oauth_redirect():
+        return app.config['SERVER_NAME'] + url_for('oauth')
 
 if __name__ == '__main__':
-    responseServer = OAuth2ResponseServer()
-    responseServer.start()
-    responseServer.shutdown()
+    OAuth2ResponseServer.start()
