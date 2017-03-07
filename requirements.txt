@@ -1,2 +1,5 @@
+arrow==0.10.0
+cherrypy==10.1.1
+fitbit==0.3.0
 Flask==0.11.1
 requests-oauthlib==0.7.0

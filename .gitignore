@@ -3,3 +3,4 @@ __pycache__/
 *.pyc
 
 *.swp
+gather_keys_oauth2.py
