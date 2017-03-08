@@ -4,3 +4,4 @@ __pycache__/
 
 *.swp
 gather_keys_oauth2.py
+config.yaml

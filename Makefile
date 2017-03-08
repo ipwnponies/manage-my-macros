@@ -9,7 +9,7 @@ help:
 
 .PHONY: run
 run: virtualenv_run gather_keys_oauth2.py
-	virtualenv_run/bin/python gather_keys_oauth2.py $(CLIENT_ID) $(CLIENT_SECRET)
+	virtualenv_run/bin/python my_cool_script.py $(CLIENT_ID) $(CLIENT_SECRET)
 
 gather_keys_oauth2.py: virtualenv_run
 	wget https://raw.githubusercontent.com/orcasgit/python-fitbit/master/gather_keys_oauth2.py
